@@ -13,7 +13,7 @@ class NewsManager {
 
     func fetchGNews() async throws -> GNews? {
     
-        guard let url = URL(string: "https://gnews.io/api/v4/search?q=example&apikey=01d27af667f6c3c9bde6df9e82109664") else { return nil }
+        guard let url = URL(string: "https://gnews.io/api/v4/search?q=example&max=3&apikey=01d27af667f6c3c9bde6df9e82109664") else { return nil }
         var request = URLRequest(url: url )
         request.httpMethod = "GET"
 
