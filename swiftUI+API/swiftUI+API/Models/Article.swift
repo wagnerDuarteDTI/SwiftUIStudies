@@ -14,10 +14,10 @@ public struct Article: Codable, Hashable {
     public let content: String
     public let url: String
     public let image: String
-    public let publishedAt: Date
+    public let publishedAt: String
     public let source: Source
 
-    init(title: String, description: String, content: String, url: String, image: String, publishedAt: Date, source: Source) {
+    init(title: String, description: String, content: String, url: String, image: String, publishedAt: String, source: Source) {
         self.title = title
         self.description = description
         self.content = content
