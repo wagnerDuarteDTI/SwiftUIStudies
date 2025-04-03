@@ -18,8 +18,9 @@ public class NewsViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-            let news = try await NewsManager.shared.fetchGNews()
-            gNews = news
+            /*let news = try await NewsManager.shared.fetchGNews()
+            gNews = news*/
+            gNews = GNewsMock.shared.gNewsMock
         } catch {
             errorMessage = "Failed to fetch news: \(error.localizedDescription)"
         }

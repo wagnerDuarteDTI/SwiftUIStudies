@@ -11,9 +11,8 @@ import SwiftUI
 struct swiftUI_APIApp: App {
     var body: some Scene {
         WindowGroup {
-            LanguagePickerView()
-            KeyWordTextFieldView()
-            //NewsView()
+            FormsView()
+            NewsView()
         }
     }
 }
