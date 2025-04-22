@@ -7,13 +7,30 @@
 
 import SwiftUI
 
-@MainActor
 public class MainViewModel: ObservableObject {
 
-    var formsViewModel: FormsViewModel?
-    var newsViewModel: NewsViewModel?
+    @Published var gNews: GNews?
+    @Published var selectedLanguage: Languages = .english
+    @Published var keyWord: String = "a"
+    @Published var isLoading: Bool = false
+    @Published var didPressButton: Bool = false
+    @Published var errorMessage: String? = nil
 
     func fetchFormsData(selectedLanguage: String, keyWord: String) {
-        self.newsViewModel?.didPressButton = true
+        
     }
+
+    func fetchNews() async {
+        isLoading = true
+        errorMessage = nil
+
+        do {
+            let news = try await NewsManager.shared.fetchGNews()
+            gNews = news
+            //gNews = GNewsMock.shared.gNewsMock
+        } catch {
+            errorMessage = "Failed to fetch news: \(error.localizedDescription)"
+        }
+        isLoading = false
+     }
 }

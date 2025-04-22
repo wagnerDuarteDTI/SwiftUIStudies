@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ConfirmButtonView: View {
-    
-    @ObservedObject var formsViewModel: FormsViewModel
+
+    @ObservedObject private var mainViewModel: MainViewModel
+
+    init(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
+    }
 
     var body: some View {
         Button("Search News") {
-            formsViewModel.fetchFormsData()
+            mainViewModel.fetchFormsData(selectedLanguage: "", keyWord: "")
         }
         .padding()
         .background(Color.blue)

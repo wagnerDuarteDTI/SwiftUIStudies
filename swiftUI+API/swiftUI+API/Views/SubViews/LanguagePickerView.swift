@@ -9,14 +9,18 @@ import SwiftUI
 
 struct LanguagePickerView: View {
 
-    @ObservedObject var formsViewModel: FormsViewModel
+    @ObservedObject private var mainViewModel: MainViewModel
+
+    init(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
+    }
 
     var body: some View {
         HStack {
             Text("Please, select a language: ")
                          .font(.headline)
                          .padding(.trailing, 8)
-            Picker("", selection: $formsViewModel.selectedLanguage) {
+            Picker("", selection: $mainViewModel.selectedLanguage) {
                 ForEach(Languages.allCases) { language in
                     Text(language.rawValue).tag(language)
                 }

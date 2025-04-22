@@ -9,18 +9,26 @@ import SwiftUI
 
 public struct FormsView: View {
 
-    @ObservedObject private var formsViewModel: FormsViewModel
+    @ObservedObject private var mainViewModel: MainViewModel
 
-    init(parentViewModel: MainViewModel) {
-        formsViewModel = FormsViewModel(parentViewModel)
+    init(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
     }
 
     public var body: some View {
         Form {
+            HStack {
+                Text("Insert a search key word:")
+                    .font(.title2)
+                    .padding()
+                TextField("Enter your name:", text: $mainViewModel.keyWord)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+            }
             Text("Title")
-            LanguagePickerView(formsViewModel: self.formsViewModel)
-            KeyWordTextFieldView(formsViewModel: self.formsViewModel)
-            ConfirmButtonView(formsViewModel: self.formsViewModel)
+            LanguagePickerView(self.mainViewModel)
+            KeyWordTextFieldView(self.mainViewModel)
+            ConfirmButtonView(self.mainViewModel)
         }
     }
 }

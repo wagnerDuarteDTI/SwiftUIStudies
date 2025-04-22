@@ -7,17 +7,14 @@
 
 
 import SwiftUI
+import Observation
 
 public struct MainView: View {
 
-    @ObservedObject private var mainViewModel = MainViewModel()
+    @StateObject private var mainViewModel = MainViewModel()
 
     public var body: some View {
-        FormsView(parentViewModel: self.mainViewModel)
-        NewsView(parentViewModel: self.mainViewModel)
-    }
-    
-    public func fetchNews() {
-        
+        FormsView(self.mainViewModel)
+        NewsView(self.mainViewModel)
     }
 }

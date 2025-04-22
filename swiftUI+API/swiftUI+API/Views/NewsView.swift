@@ -9,24 +9,24 @@ import SwiftUI
 
 public struct NewsView: View {
 
-    @ObservedObject private var newsViewModel: NewsViewModel
-    
-    init(parentViewModel: MainViewModel) {
-        newsViewModel = NewsViewModel(parentViewModel)
+    @ObservedObject private var mainViewModel: MainViewModel
+
+    init(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
     }
 
     public var body: some View {
         NavigationView {
-            if newsViewModel.didPressButton {
+            if mainViewModel.didPressButton {
                 Group {
-                    if newsViewModel.isLoading {
+                    if mainViewModel.isLoading {
                         ProgressView("Loading...")
-                    } else if let errorMessage = newsViewModel.errorMessage {
+                    } else if let errorMessage = mainViewModel.errorMessage {
                         Text(errorMessage)
                             .foregroundColor(.red)
                             .multilineTextAlignment(.center)
                             .padding()
-                    } else if let gNews = newsViewModel.gNews {
+                    } else if let gNews = mainViewModel.gNews {
                         List(gNews.articles, id: \.title) { article in
                             VStack(alignment: .leading) {
                                 Text(article.title)
@@ -43,7 +43,7 @@ public struct NewsView: View {
                 }
                 .navigationTitle("GNews")
                 .task {
-                    await newsViewModel.fetchNews()
+                    await mainViewModel.fetchNews()
                 }
             } else {
                 Text("Waiting for Button Press...")

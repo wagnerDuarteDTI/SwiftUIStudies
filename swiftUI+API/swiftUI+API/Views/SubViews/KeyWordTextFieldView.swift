@@ -10,14 +10,18 @@ import SwiftUI
 
 struct KeyWordTextFieldView: View {
 
-    @ObservedObject var formsViewModel: FormsViewModel
+    @ObservedObject private var mainViewModel: MainViewModel
+
+    init(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
+    }
 
     var body: some View {
         HStack {
             Text("Insert a search key word:")
                 .font(.title2)
                 .padding()
-            TextField("Enter your name:", text: $formsViewModel.keyWord)
+            TextField("Enter your name:", text: $mainViewModel.keyWord)
                 .textFieldStyle(.roundedBorder)
                 .padding()
         }
