@@ -8,14 +8,18 @@
 import SwiftUI
 
 public struct FormsView: View {
-    
-    @ObservedObject private var formsViewModel = FormsViewModel()
-    
+
+    @ObservedObject private var formsViewModel: FormsViewModel
+
+    init(parentViewModel: MainViewModel) {
+        formsViewModel = FormsViewModel(parentViewModel)
+    }
+
     public var body: some View {
-        VStack {
+        Form {
             Text("Title")
             LanguagePickerView(formsViewModel: self.formsViewModel)
-            KeyWordTextFieldView()
+            KeyWordTextFieldView(formsViewModel: self.formsViewModel)
             ConfirmButtonView(formsViewModel: self.formsViewModel)
         }
     }

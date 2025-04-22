@@ -9,10 +9,18 @@ import SwiftUI
 
 @MainActor
 public class FormsViewModel: ObservableObject {
+
+    @ObservedObject private var parentViewModel: MainViewModel
+
     @Published var selectedLanguage: Languages = .english
-    @Published var keyWord: String = ""
+    @Published var keyWord: String = "a"
+
+    init(_ parentViewModel: MainViewModel) {
+        self.parentViewModel = parentViewModel
+        parentViewModel.formsViewModel = self
+    }
 
     func fetchFormsData() {
-        
+        parentViewModel.fetchFormsData(selectedLanguage: self.selectedLanguage.rawValue, keyWord: self.keyWord)
     }
 }

@@ -11,8 +11,7 @@ import SwiftUI
 struct swiftUI_APIApp: App {
     var body: some Scene {
         WindowGroup {
-            FormsView()
-            NewsView()
+            MainView()
         }
     }
 }
