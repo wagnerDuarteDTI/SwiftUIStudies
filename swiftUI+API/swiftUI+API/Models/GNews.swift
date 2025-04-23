@@ -19,13 +19,9 @@ public struct GNews: Codable, Hashable {
 }
 
 public enum Languages: String, CaseIterable, Identifiable  {
-    case english = "English"
-    case portuguese = "Portuguese"
-    case spanish = "Spanish"
-    case french = "French"
-    case italian = "Italian"
-    case japanese = "Japanese"
-    case chinese = "Chinese"
+    case english = "en"
+    case portuguese = "pt"
+    case spanish = "es"
 
     public var id: String { self.rawValue }
 }

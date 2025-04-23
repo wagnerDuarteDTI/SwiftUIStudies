@@ -16,7 +16,7 @@ public struct FormsView: View {
     }
 
     public var body: some View {
-        Form {
+        VStack {
             HStack {
                 Text("Insert a search key word:")
                     .font(.title2)

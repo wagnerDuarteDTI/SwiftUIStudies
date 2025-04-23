@@ -42,9 +42,6 @@ public struct NewsView: View {
                     }
                 }
                 .navigationTitle("GNews")
-                .task {
-                    await mainViewModel.fetchNews()
-                }
             } else {
                 Text("Waiting for Button Press...")
             }

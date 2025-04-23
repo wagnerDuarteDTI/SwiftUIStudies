@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 public class MainViewModel: ObservableObject {
 
     @Published var gNews: GNews?
@@ -16,15 +17,13 @@ public class MainViewModel: ObservableObject {
     @Published var didPressButton: Bool = false
     @Published var errorMessage: String? = nil
 
-    func fetchFormsData(selectedLanguage: String, keyWord: String) {
-        
-    }
-
     func fetchNews() async {
+        didPressButton = true
         isLoading = true
         errorMessage = nil
 
         do {
+            NewsManager.shared.buildGNewsURL(self.selectedLanguage.id, self.keyWord)
             let news = try await NewsManager.shared.fetchGNews()
             gNews = news
             //gNews = GNewsMock.shared.gNewsMock

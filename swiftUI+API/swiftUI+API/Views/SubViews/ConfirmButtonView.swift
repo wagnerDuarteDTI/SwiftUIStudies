@@ -17,7 +17,9 @@ struct ConfirmButtonView: View {
 
     var body: some View {
         Button("Search News") {
-            mainViewModel.fetchFormsData(selectedLanguage: "", keyWord: "")
+            Task {
+                await mainViewModel.fetchNews()
+            }
         }
         .padding()
         .background(Color.blue)

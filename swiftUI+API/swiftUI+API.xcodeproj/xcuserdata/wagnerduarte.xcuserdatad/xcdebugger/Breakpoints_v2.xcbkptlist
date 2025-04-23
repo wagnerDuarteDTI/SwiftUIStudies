@@ -3,4 +3,52 @@
    uuid = "1C88A34F-7795-4F84-ABA2-2BC9F100A150"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11E0C004-7793-4CA9-8034-A01157E7C7D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "swiftUI+API/ViewModels/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "fetchNews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "11E0C004-7793-4CA9-8034-A01157E7C7D7 - 3dd7cff82e84eeac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for swiftUI_API.MainViewModel.fetchNews() async -&gt; ()"
+                  moduleName = "swiftUI+API.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wagnerduarte/Desktop/SwiftUIStudies/swiftUI+API/swiftUI+API/ViewModels/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30">
+               </Location>
+               <Location
+                  uuid = "11E0C004-7793-4CA9-8034-A01157E7C7D7 - 3dd7cff82e84eeac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for swiftUI_API.MainViewModel.fetchNews() async -&gt; ()"
+                  moduleName = "swiftUI+API.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wagnerduarte/Desktop/SwiftUIStudies/swiftUI+API/swiftUI+API/ViewModels/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
