@@ -14,19 +14,18 @@ public class MainViewModel: ObservableObject {
     @Published var selectedLanguage: Languages = .english
     @Published var keyWord: String = "a"
     @Published var isLoading: Bool = false
-    @Published var didPressButton: Bool = false
     @Published var errorMessage: String? = nil
+    @Published var isNewsView: Bool = false
 
     func fetchNews() async {
-        didPressButton = true
+        isNewsView = true
         isLoading = true
         errorMessage = nil
 
         do {
-            NewsManager.shared.buildGNewsURL(self.selectedLanguage.id, self.keyWord)
+            NewsManager.shared.buildGNewsURL(self.selectedLanguage.acronym, self.keyWord)
             let news = try await NewsManager.shared.fetchGNews()
             gNews = news
-            //gNews = GNewsMock.shared.gNewsMock
         } catch {
             errorMessage = "Failed to fetch news: \(error.localizedDescription)"
         }

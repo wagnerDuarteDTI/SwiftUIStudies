@@ -17,18 +17,43 @@ public struct FormsView: View {
 
     public var body: some View {
         VStack {
-            HStack {
-                Text("Insert a search key word:")
-                    .font(.title2)
+            Text("GNews")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundStyle(.blue)
+            Form {
+                Section {
+                    Picker("Language chosen:", selection: $mainViewModel.selectedLanguage) {
+                        ForEach(Languages.allCases) { language in
+                            Text(language.rawValue).tag(language)
+                        }
+                    }
+                    .pickerStyle(.automatic)
                     .padding()
-                TextField("Enter your name:", text: $mainViewModel.keyWord)
-                    .textFieldStyle(.roundedBorder)
-                    .padding()
+                } header: {
+                    Text("Language Selection")
+                } footer: {
+                    Text("The GNews will search for news in the language you choose!")
+                }
+                Section {
+                    TextField("News subject:", text: $mainViewModel.keyWord)
+                        .textFieldStyle(.roundedBorder)
+                        .padding()
+                } header: {
+                    Text("Subject Selection")
+                } footer: {
+                    Text("The GNews will search for news for the keywords you enter!")
+                }
             }
-            Text("Title")
-            LanguagePickerView(self.mainViewModel)
-            KeyWordTextFieldView(self.mainViewModel)
-            ConfirmButtonView(self.mainViewModel)
+            Button("Search News") {
+                Task {
+                    await mainViewModel.fetchNews()
+                }
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(8)
         }
     }
 }

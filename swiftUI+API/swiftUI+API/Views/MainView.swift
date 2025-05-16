@@ -14,7 +14,10 @@ public struct MainView: View {
     @StateObject private var mainViewModel = MainViewModel()
 
     public var body: some View {
-        FormsView(self.mainViewModel)
-        NewsView(self.mainViewModel)
+        if mainViewModel.isNewsView {
+            NewsListView(self.mainViewModel)
+        } else {
+            FormsView(self.mainViewModel)
+        }
     }
 }

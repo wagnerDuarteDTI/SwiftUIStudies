@@ -17,10 +17,7 @@ struct LanguagePickerView: View {
 
     var body: some View {
         HStack {
-            Text("Please, select a language: ")
-                         .font(.headline)
-                         .padding(.trailing, 8)
-            Picker("", selection: $mainViewModel.selectedLanguage) {
+            Picker("Please, select a language:", selection: $mainViewModel.selectedLanguage) {
                 ForEach(Languages.allCases) { language in
                     Text(language.rawValue).tag(language)
                 }
