@@ -11,16 +11,22 @@ import SwiftUI
    In this case below, the protocol is being used to create the .withRouter modifier.
    this modifier implements a NavigationStack, adds a enviroment router to it, add a navigationDestination (for what???).
    The view that implements this modifier will be abble to manage the navigation */
-struct RouterViewModifier: ViewModifier {
-    @State private var router = Router()
+struct MainRouterViewModifier: ViewModifier {
+
+    @State private var router: Router
+    @StateObject var mainViewModel = MainViewModel()
     
+    init(with router: Router) {
+        self.router = router
+    }
+
     private func routeView(for route: Route) -> some View {
-        Group {
+        return Group {
             switch route {
             case .newsList:
-                MainView()
+                NewsListView(mainViewModel)
             case .forms:
-                MainView()
+                FormsView(mainViewModel)
             }
         }
         .environment(router)
@@ -38,7 +44,11 @@ struct RouterViewModifier: ViewModifier {
 }
 
 extension View {
-    func withRouter() -> some View {
-        self.modifier(RouterViewModifier())
+    func setupMainRouterEnviroment() -> some View {
+        self.environment(Router())
+    }
+
+    func withMainRouter(with router: Router) -> some View {
+        self.modifier(MainRouterViewModifier(with: router))
     }
 }

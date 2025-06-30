@@ -11,13 +11,11 @@ import Observation
 
 public struct MainView: View {
 
-    @StateObject private var mainViewModel = MainViewModel()
+    @Environment(Router.self) var router
+    @StateObject var mainViewModel = MainViewModel()
 
     public var body: some View {
-        if mainViewModel.isNewsView {
-            NewsListView(self.mainViewModel)
-        } else {
-            FormsView(self.mainViewModel)
-        }
+        FormsView(mainViewModel)
+            .withMainRouter(with: self.router)
     }
 }

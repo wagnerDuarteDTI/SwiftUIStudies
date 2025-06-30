@@ -12,6 +12,7 @@ struct swiftUI_APIApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .setupMainRouterEnviroment()
         }
     }
 }

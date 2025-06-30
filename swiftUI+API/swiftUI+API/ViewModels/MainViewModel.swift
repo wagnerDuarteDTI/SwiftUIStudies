@@ -8,6 +8,7 @@
 import SwiftUI
 
 @MainActor
+@Observable
 public class MainViewModel: ObservableObject {
 
     @Published var gNews: GNews?

@@ -10,6 +10,7 @@ import SwiftUI
 public struct FormsView: View {
 
     @ObservedObject private var mainViewModel: MainViewModel
+    @Environment(Router.self) var router
 
     init(_ mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel
@@ -48,6 +49,7 @@ public struct FormsView: View {
             Button("Search News") {
                 Task {
                     await mainViewModel.fetchNews()
+                    router.navigateToNewsListView()
                 }
             }
             .padding()

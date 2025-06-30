@@ -10,6 +10,7 @@ import SwiftUI
 public struct NewsListView: View {
 
     @ObservedObject private var mainViewModel: MainViewModel
+    @Environment(Router.self) var router
 
     init(_ mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel
@@ -45,6 +46,7 @@ public struct NewsListView: View {
             Button("Back to Menu") {
                 Task {
                     mainViewModel.isNewsView = false
+                    router.navigateToFormsView()
                 }
             }
             .padding()
